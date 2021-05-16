@@ -5,7 +5,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -24,8 +31,8 @@ public class UserController {
 
     @PostConstruct
     public void init() throws Exception {
-        users.put(Long.valueOf(1), new User(1, "Jack", "Smith", 18));
-        users.put(Long.valueOf(2), new User(2, "Peter", "Johnson", 36));
+        users.put(1L, new User(1, "Jack", "Smith", 18));
+        users.put(2L, new User(2, "Peter", "Johnson", 36));
     }
 
     /**
@@ -35,7 +42,7 @@ public class UserController {
     @GetMapping("/index")
     public Flux<User> getAll() {
         return Flux.fromIterable(users.entrySet().stream()
-            .map(entry -> entry.getValue())
+            .map(Map.Entry::getValue)
             .collect(Collectors.toList()));
     }
 
