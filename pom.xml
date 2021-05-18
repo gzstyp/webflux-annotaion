@@ -8,7 +8,13 @@
 	<version>v1.0.0</version>
 	<packaging>jar</packaging>
 
-	<description>webflux注解式</description>
+	<description>
+		webflux注解式
+		随着响应式编程在网络编程中使用越发的普及，mysql等一系列的关系型数据库也在r2dbc等包的帮助下支持响应式。
+        虽然响应式跟原来的sevlet的写法区别比较大，但是spring尽量保持原来的风格，
+        编写control层和service层的方法跟原来基本相同，略有区别就是controller返回的Mono或是Flux。
+        特别是对crud的支持，跟原来的jpa基本相同。
+	</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
